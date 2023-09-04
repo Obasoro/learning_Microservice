@@ -1,8 +1,16 @@
 const express = require('express')
-
+const fs = require("fs");
 const app = express();
 
 const port = 3000;
+
+// Throws an error if the PORT environment variable is missing.
+
+if (!process.env.PORT) {
+    throw new error("Please specify the port number for the HTTP server")
+}
+
+const PORT = process.env.PORT;
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -32,7 +40,7 @@ app.get('/video', (req, res) => {
 
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Listening App
-    on port &{port}!`);
+    on port &{PORT}, point your browser at http://localhost:${PORT}/video`);
 });
