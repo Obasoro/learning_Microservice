@@ -2,13 +2,15 @@ version: '3'
 services:
 
   video-streaming:
-    image: video-streaming
+    image: obasoro/video-streaming
     build: 
       context: ./video-streaming
       dockerfile: Dockerfile
     container_name: video-streaming
     ports:
-     - "4000:80"
+      - "5000:5000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       - PORT=80
     restart: "no"
